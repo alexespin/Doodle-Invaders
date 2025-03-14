@@ -163,7 +163,7 @@ class Level1 extends Phaser.Scene {
                     this.star
                 }, 1000)
                 this.startGame();
-                
+
             return;
         }
         // game started
@@ -353,6 +353,30 @@ class Level1 extends Phaser.Scene {
     }
 }
 
+class CutScene extends Phaser.Scene {
+    constructor() {
+        super({ key: 'CutScene' });
+    }
+
+    preload() {
+        this.load.image('sky', 'assets/squared-paper-texture.avif');
+        this.load.image('logo', 'assets/DoodleInvadersLogos.png');
+    }
+
+    create() {
+        this.sky = this.add.image(400, 300, 'sky');
+        this.sky.setDisplaySize(800, 600);
+        this.logo = this.add.image(400, 250, 'logo');
+        this.logo.setDisplaySize(400, 250);
+        
+        this.add.text(300, 500, 'Press SPACE to Start', { fontSize: '20px', fill: '#000' });
+
+        this.input.keyboard.once('keydown-SPACE', () => {
+            this.scene.start('Level1');
+        });
+    }
+}
+
 var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -361,7 +385,7 @@ var config = {
         default: 'arcade',
         arcade: { gravity: { y: 0 }, debug: false }
     },
-    scene: [MenuScene, Level1]
+    scene: [MenuScene, Level1, CutScene]
 };
 
 var game = new Phaser.Game(config);
