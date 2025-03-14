@@ -394,7 +394,7 @@ class Level1 extends Phaser.Scene {
         this.load.image('star', 'assets/star.png');
         this.load.image('bomb', 'assets/bomb.png');
         this.load.image('ammo', 'assets/ammo.png');
-        this.load.image('rocket', 'assets/asteroid.png');
+        this.load.image('asteroid', 'assets/asteroid.png');
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 
         this.load.spritesheet('plane', 'assets/paper-airPlane.png', { frameWidth: 73, frameHeight: 47});
@@ -408,7 +408,7 @@ class Level1 extends Phaser.Scene {
         this.sky.setDisplaySize(800, 600);
         this.logo = this.add.image(400, 250, 'logo');
         this.logo.setDisplaySize(400, 250);
-    
+       
         this.player = this.physics.add.sprite(100, 300, 'plane')
         this.player.setSize(60,35,true);
         this.bullets = this.physics.add.group();
