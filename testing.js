@@ -507,8 +507,7 @@ class Level1 extends Phaser.Scene {
         if (this.gameOver) {
             this.gameOverFunc();
             if (this.cursors.space.isDown) {
-            
-            this.scene.start('Level1');
+                location.reload();
             }
             return
         }
