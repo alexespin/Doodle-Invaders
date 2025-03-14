@@ -9,8 +9,11 @@ class MenuScene extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(400, 300, 'sky');
-        this.add.image(400, 250, 'logo');
+        this.sky = this.add.image(400, 300, 'sky');
+        this.sky.setDisplaySize(800, 600);
+        this.logo = this.add.image(400, 250, 'logo');
+        this.logo.setDisplaySize(400, 250);
+        
         this.add.text(300, 500, 'Press SPACE to Start', { fontSize: '20px', fill: '#000' });
 
         this.input.keyboard.once('keydown-SPACE', () => {
@@ -156,12 +159,11 @@ class Level1 extends Phaser.Scene {
             this.rollText.visible = false;
             this.player.visible = false;
     
-            if (this.cursors.space.isDown) {
                 setInterval(() => {
                     this.star
                 }, 1000)
                 this.startGame();
-            }
+                
             return;
         }
         // game started
@@ -314,7 +316,7 @@ class Level1 extends Phaser.Scene {
     }
     timer() {
         this.powerUpText.visible = true;
-        this.startTimer = setInterval(this.endTimer, 5000);
+        this.startTimer = setInterval(() => this.endTimer(), 5000);
         this.boolTimer = false;
     }
     endTimer() {
