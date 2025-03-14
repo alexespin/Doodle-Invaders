@@ -502,7 +502,8 @@ class Level1 extends Phaser.Scene {
         if (this.gameOver) {
             this.gameOverFunc();
             if (this.cursors.space.isDown) {
-                this.startGame();
+            
+            this.scene.start('Level1');
             }
             return
         }
@@ -617,11 +618,11 @@ class Level1 extends Phaser.Scene {
         }
         var x = Phaser.Math.Between(0, 600)
         console.log("bomb");
-        var bomb = this.bombs.create(700, x, 'rocket');
+        var bomb = this.bombs.create(700, x, 'asteroid');
         bomb.setVelocityX(-100 * this.speedMulti);
         bomb.setSize(100,50,true);
         bomb.outOfBoundsKill= true;
-        bomb.anims.play('rocket', true);
+        bomb.anims.play('asteroid', true);
     }
     shoot() {
         var playerX = this.player.x;
@@ -667,6 +668,7 @@ class Level1 extends Phaser.Scene {
         clearInterval(this.intPowerUps);
         this.bombs.clear(true);
         this.stars.clear(true);
+        this.powerUps.clear(true);
         this.player.anims.play('turn', true);
     
         this.speedMulti = 1;
