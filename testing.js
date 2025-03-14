@@ -59,7 +59,7 @@ class Level1 extends Phaser.Scene {
         this.load.image('bomb', 'assets/bomb.png');
         this.load.image('ammo', 'assets/ammo.png');
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.spritesheet('rocket', 'assets/rocketSpriteSheet.png', { frameWidth: 127, frameHeight: 93})
+        this.load.image('asteroid', 'assets/asteroid.png');
 
         this.load.spritesheet('plane', 'assets/paper-airPlane.png', { frameWidth: 73, frameHeight: 47});
     }
@@ -111,14 +111,14 @@ class Level1 extends Phaser.Scene {
             repeat: -1
         });
     
-            // rocket
+            // asteroid
         this.anims.create({
             key: 'stop',
-            frames: [{key: 'rocket', frame: 0}]
+            frames: [{key: 'asteroid', frame: 0}]
         })
         this.anims.create({
-            key: 'rocket',
-            frames: this.anims.generateFrameNumbers('rocket', { start: 0, end: 1 }),
+            key: 'asteroid',
+            frames: this.anims.generateFrameNumbers('', { start: 0, end: 1 }),
             frameRate: 5,
             repeat: -1
         });
@@ -474,7 +474,7 @@ class Level1 extends Phaser.Scene {
         });
         this.gameOverText = this.add.text(300, 300, 'high score: ' + this.highScore, {
             fontSize: '32px',
-            fill: '#000'
+            fill: 'white'
         })
         this.gameOverText.visible = false;
         this.powerUpText.visible = false;
@@ -666,6 +666,7 @@ class Level1 extends Phaser.Scene {
         clearInterval(this.intPowerUps);
         this.bombs.clear(true);
         this.stars.clear(true);
+        this.ammo.clear(true);
         this.player.anims.play('turn', true);
     
         this.speedMulti = 1;
