@@ -389,13 +389,13 @@ class Level1 extends Phaser.Scene {
         this.gameOver = false;
 
         this.load.image('logo', 'assets/DoodleInvadersLogos.png')
-        this.load.image('sky', 'assets/space.png');
+        this.load.image('space', 'assets/space.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('star', 'assets/star.png');
         this.load.image('bomb', 'assets/bomb.png');
         this.load.image('ammo', 'assets/ammo.png');
+        this.load.image('rocket', 'assets/asteroid.png')
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.spritesheet('rocket', 'assets/rocketSpriteSheet.png', { frameWidth: 127, frameHeight: 93})
 
         this.load.spritesheet('plane', 'assets/paper-airPlane.png', { frameWidth: 73, frameHeight: 47});
     }
@@ -404,7 +404,7 @@ class Level1 extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
 
 
-        this.sky = this.add.image(400, 300, 'sky');
+        this.sky = this.add.image(400, 300, 'space');
         this.sky.setDisplaySize(800, 600);
         this.logo = this.add.image(400, 250, 'logo');
         this.logo.setDisplaySize(400, 250);
@@ -447,17 +447,6 @@ class Level1 extends Phaser.Scene {
             repeat: -1
         });
     
-            // rocket
-        this.anims.create({
-            key: 'stop',
-            frames: [{key: 'rocket', frame: 0}]
-        })
-        this.anims.create({
-            key: 'rocket',
-            frames: this.anims.generateFrameNumbers('rocket', { start: 0, end: 1 }),
-            frameRate: 5,
-            repeat: -1
-        });
         // colliders
         this.physics.add.collider(this.player, this.bombs, this.RocketHit, null, this);
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
@@ -709,9 +698,8 @@ class CutScene extends Phaser.Scene {
         
         this.add.text(300, 500, 'Press SPACE to Start', { fontSize: '20px', fill: '#000' });
 
-        this.input.keyboard.once('keydown-SPACE', () => {
-            this.scene.start('Level1');
-        });
+        this.scene.start('Level2');
+ 
     }
 }
 
