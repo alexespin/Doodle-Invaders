@@ -59,8 +59,8 @@ class Level1 extends Phaser.Scene {
         this.load.image('bomb', 'assets/bomb.png');
         this.load.image('ammo', 'assets/ammo.png');
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-        this.load.image('asteroid', 'assets/asteroid.png');
 
+        this.load.spritesheet('rocket', 'assets/rocketSpriteSheet.png', { frameWidth: 127, frameHeight: 93})
         this.load.spritesheet('plane', 'assets/paper-airPlane.png', { frameWidth: 73, frameHeight: 47});
     }
 
