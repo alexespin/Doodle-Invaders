@@ -45,6 +45,8 @@ class Level1 extends Phaser.Scene {
         this.stars = null;
         this.powerUps = null;
         this.bomb = null;
+
+
     }
 
     preload() {
@@ -177,6 +179,11 @@ class Level1 extends Phaser.Scene {
                 this.startGame();
             }
             return
+        }
+
+        // point check
+        if (this.score == 1) {
+            this.scene.start('CutScene');
         }
     
         // keys
