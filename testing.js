@@ -111,14 +111,14 @@ class Level1 extends Phaser.Scene {
             repeat: -1
         });
     
-            // asteroid
+             // rocket
         this.anims.create({
             key: 'stop',
-            frames: [{key: 'asteroid', frame: 0}]
+            frames: [{key: 'rocket', frame: 0}]
         })
         this.anims.create({
-            key: 'asteroid',
-            frames: this.anims.generateFrameNumbers('', { start: 0, end: 1 }),
+            key: 'rocket',
+            frames: this.anims.generateFrameNumbers('rocket', { start: 0, end: 1 }),
             frameRate: 5,
             repeat: -1
         });
@@ -394,7 +394,7 @@ class Level1 extends Phaser.Scene {
         this.load.image('star', 'assets/star.png');
         this.load.image('bomb', 'assets/bomb.png');
         this.load.image('ammo', 'assets/ammo.png');
-        this.load.image('rocket', 'assets/asteroid.png')
+        this.load.image('rocket', 'assets/asteroid.png');
         this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 
         this.load.spritesheet('plane', 'assets/paper-airPlane.png', { frameWidth: 73, frameHeight: 47});
@@ -447,6 +447,7 @@ class Level1 extends Phaser.Scene {
             repeat: -1
         });
     
+          
         // colliders
         this.physics.add.collider(this.player, this.bombs, this.RocketHit, null, this);
         this.physics.add.overlap(this.player, this.stars, this.collectStar, null, this);
@@ -666,7 +667,6 @@ class Level1 extends Phaser.Scene {
         clearInterval(this.intPowerUps);
         this.bombs.clear(true);
         this.stars.clear(true);
-        this.ammo.clear(true);
         this.player.anims.play('turn', true);
     
         this.speedMulti = 1;
