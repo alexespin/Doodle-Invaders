@@ -183,7 +183,12 @@ class Level1 extends Phaser.Scene {
 
         // point check
         if (this.score == 1) {
-            this.scene.start('CutScene');
+
+            this.cameras.main.fadeOut(500, 0, 0, 0);
+            this.cameras.main.once('camerafadeoutcomplete', () => {
+                    this.scene.start('Level2');
+            });
+ 
         }
     
         // keys
@@ -701,8 +706,7 @@ class CutScene extends Phaser.Scene {
         
         this.add.text(300, 500, 'Press SPACE to Start', { fontSize: '20px', fill: '#000' });
 
-        this.scene.start('Level2');
- 
+        
     }
 }
 
