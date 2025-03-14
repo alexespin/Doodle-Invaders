@@ -240,10 +240,10 @@ class Level1 extends Phaser.Scene {
         this.gameStarted = true;
         this.gameOver = false;
     
-        this.intPowerUps = setInterval(this.addPowerUps, 10000);
-        this.intStars = setInterval(this.addStars, 4000);
-        this.intBombs = setInterval(this.addBomb, 2000);
-        this.intSpeed = setInterval(this.increaseSpeed, 10000);
+        this.intPowerUps = setInterval(() => this.addPowerUps(), 10000);
+        this.intStars = setInterval(() => this.addStars(), 4000);
+        this.intBombs = setInterval(() => this.addBomb(), 2000);
+        this.intSpeed = setInterval(() => this.increaseSpeed(), 10000);
     
         this.scoreText.visible = true;
         this.rollText.visible = true;
@@ -264,7 +264,13 @@ class Level1 extends Phaser.Scene {
     }
     
     addStars(){
+        if (!this.stars) {  // Check if this.stars exists
+            console.error("this.stars is not initialized!");
+            return;
+        }
+
         let x = Phaser.Math.Between(0, 600)
+        console.log(x)
         console.log("star");
         let star = this.stars.create(700, x, 'star');
         star.setVelocityX(-100)
